@@ -1,4 +1,4 @@
-#[derive(PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq)]
 enum Tag {
   Literal(String),
 }
@@ -7,6 +7,7 @@ fn literal(tag_name: &str) -> Tag {
   Tag::Literal(String::from(tag_name))
 }
 
+#[derive(Debug)]
 enum Query {
   Tag(Tag),
   Not(Box<Query>),
@@ -30,6 +31,13 @@ fn main() {
 #[cfg(test)]
 mod tests {
   use super::*;
+
+  #[test]
+  fn literal_works() {
+    let a = literal("foo");
+    let b = Tag::Literal(String::from("foo"));
+    assert_eq!(a, b);
+  }
 
   #[test]
   fn tag_list_includes_tag() {
