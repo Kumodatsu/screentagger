@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      html, body {
+        height: 100%;
+      }
+
+      body {
+        background-color: #111111;
+        font-family:      Arial, Helvetica, sans-serif;
+        color:            white;
+        margin:           0 0 0 0;
+        padding:          0 0 0 0;
+        background-color: green;
+      }
+
+      /* Flex layout */
+      .flex-container {
+        display:        flex;
+        flex-direction: row;
+        height:         100%;
+      }
+
+      .sidebar {
+        display:          flex;
+        flex-direction:   column;
+        background-color: coral;
+      }
+
+      .searchbar {
+        flex: 0 0 auto;
+      }
+
+      .tagbar {
+        flex:       1 1 auto;
+        overflow-y: auto;
+      }
+
+      .edit-tags-button {
+        flex: 0 0 auto;
+      }
+
+      .file-display-container {
+        display:          flex;
+        background-color: cornflowerblue;
+        flex-basis:       100%;
+      }
+
+      /* Component styling */
+      .searchbar input[type=text] {
+        padding:      6px;
+        border:       none;
+        font-size:    17px;
+      }
+
+      .tagbar ol {
+        list-style:  none;
+      }
+
+      .edit-tags-button button {
+        background-color: #ddd;
+        border:           none;
+        color:            black;
+        padding:          10px 20px;
+        text-align:       center;
+        text-decoration:  none;
+        cursor:           pointer;
+        width:            100%;
+      }
+    </style>
+  </head>
+	<body>
+    <div class="flex-container">
+      <div class="sidebar">
+        <div class="searchbar">
+          <input type="text" placeholder="search files"/>
+        </div>
+        <div class="tagbar">
+          <ol>
+            <li>tag01</li>
+            <li>tag02</li>
+            <li>tag03</li>
+            <li>tag04</li>
+            <li>tag05</li>
+            <li>tag06</li>
+            <li>tag07</li>
+            <li>tag08</li>
+            <li>tag09</li>
+            <li>tag10</li>
+            <li>tag11</li>
+            <li>tag12</li>
+            <li>tag13</li>
+            <li>tag14</li>
+            <li>tag15</li>
+            <li>tag16</li>
+            <li>tag17</li>
+            <li>tag18</li>
+            <li>tag19</li>
+            <li>tag20</li>
+            <li>tag21</li>
+            <li>tag22</li>
+            <li>tag23</li>
+            <li>tag24</li>
+            <li>tag25</li>
+            <li>tag26</li>
+            <li>tag27</li>
+            <li>tag28</li>
+            <li>tag29</li>
+          </ol>
+        </div>
+        <div class="edit-tags-button">
+          <button onclick="">edit tags</button>
+        </div>
+      </div>
+      <div class="file-display-container">
+      </div>
+    </div>
+	</body>
+</html>

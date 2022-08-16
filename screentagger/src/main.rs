@@ -1,5 +1,6 @@
 mod data;
 mod db;
+mod ui;
 
 use std::collections::HashSet;
 use data::tag::literal;
@@ -20,6 +21,8 @@ fn main() {
 
   database.display_table("file");
   database.display_table("tag");
+
+  ui::window::create_window();
 }
 
 
