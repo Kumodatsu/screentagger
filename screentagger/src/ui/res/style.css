@@ -1,0 +1,70 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #111111;
+  font-family:      Arial, Helvetica, sans-serif;
+  color:            white;
+  margin:           0 0 0 0;
+  padding:          0 0 0 0;
+  background-color: green;
+}
+
+/* Flex layout */
+.flex-container {
+  display:        flex;
+  flex-direction: row;
+  height:         100%;
+}
+
+.sidebar {
+  display:          flex;
+  flex-direction:   column;
+  background-color: coral;
+}
+
+.searchbar {
+  flex: 0 0 auto;
+}
+
+.tagbar {
+  flex:       1 1 auto;
+  overflow-y: auto;
+}
+
+.edit-tags-button {
+  flex: 0 0 auto;
+}
+
+.file-display-container {
+  display:          flex;
+  background-color: cornflowerblue;
+  flex:             1 1 auto;
+}
+
+/* Component styling */
+.searchbar input[type=text] {
+  padding:      6px;
+  border:       none;
+  font-size:    17px;
+}
+
+.tagbar ol {
+  list-style:  none;
+}
+
+.edit-tags-button button {
+  background-color: #ddd;
+  border:           none;
+  color:            black;
+  padding:          10px 20px;
+  text-align:       center;
+  text-decoration:  none;
+  cursor:           pointer;
+  width:            100%;
+}
+
+.file-display-container img {
+  width: 100%;
+}
