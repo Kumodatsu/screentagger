@@ -1,7 +1,7 @@
 use serde_json;
 use web_view::{Content};
-use crate::ui::app::*;
-use crate::ui::marshal::Command;
+use crate::app::app::*;
+use crate::app::marshal::Command;
 
 pub fn create_window() {
   web_view::builder()

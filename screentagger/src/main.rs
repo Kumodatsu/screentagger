@@ -1,9 +1,9 @@
 mod data;
 mod db;
-mod ui;
+mod app;
 
 fn main() {
-  ui::window::create_window();
+  app::window::create_window();
 }
 
 
