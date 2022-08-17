@@ -1,7 +1,8 @@
 <div class="flex-container">
   <div class="sidebar">
     <div class="searchbar">
-      <input type="text" placeholder="search files"/>
+      <input type="text" placeholder="search files"
+        onkeypress="if (event.key == 'Enter') updateQuery(this.value);"/>
     </div>
     <div class="tagbar">
       <ol>

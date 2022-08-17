@@ -1,4 +1,7 @@
+use serde_json;
 use web_view::{Content};
+use crate::ui::app::*;
+use crate::ui::marshal::Command;
 
 pub fn create_window() {
   web_view::builder()
@@ -21,9 +24,15 @@ pub fn create_window() {
     .size(800, 600)
     .resizable(true)
     .debug(true)
-    .user_data(())
-    .invoke_handler(|_webview, arg| {
-      match arg {
+    .user_data(App::new())
+    .invoke_handler(|webview, arg| {
+      let cmd = serde_json::from_str(arg)
+        .expect("Failed to deserialize command.");
+      match cmd {
+        Command::UpdateQuery { query_string } => {
+          let app = webview.user_data_mut();
+          app.query_prompt(&query_string);
+        },
         _ => {},
       };
       Ok(())
