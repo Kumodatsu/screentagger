@@ -25,20 +25,8 @@ use nom::{
   },
 };
 
-fn p_tag(s: &str) -> IResult<&str, Query> {
-    map(
-      delimited(multispace0, alphanumeric1, multispace0),
-      |x| Tag(literal(x))
-    )(s)
-}
-
-fn p_and(s: &str) -> IResult<&str, Query> {
-  let (s, expr)  = p_tag(s)?;
-  let (s, exprs) = many0(tuple((
-    tag("&"),
-    p_tag,
-  )))(s)?;
-  Ok((s, p_op(expr, exprs)))
+fn p_query(s: &str) -> IResult<&str, Query> {
+  p_or(s)
 }
 
 fn p_or(s: &str) -> IResult<&str, Query> {
@@ -51,6 +39,22 @@ fn p_or(s: &str) -> IResult<&str, Query> {
   Ok((s, p_op(expr, exprs)))
 }
 
+fn p_and(s: &str) -> IResult<&str, Query> {
+  let (s, expr)  = p_tag(s)?;
+  let (s, exprs) = many0(tuple((
+    tag("&"),
+    p_tag,
+  )))(s)?;
+  Ok((s, p_op(expr, exprs)))
+}
+
+fn p_tag(s: &str) -> IResult<&str, Query> {
+    map(
+      delimited(multispace0, alphanumeric1, multispace0),
+      |x| Tag(literal(x))
+    )(s)
+}
+
 fn p_op(q: Query, r: Vec<(&str, Query)>) -> Query {
   r.into_iter().fold(q, |acc, (op, q2)| {
     match op {
@@ -59,10 +63,6 @@ fn p_op(q: Query, r: Vec<(&str, Query)>) -> Query {
       _   => panic!("Unknown operator."),
     }
   })
-}
-
-fn p_query(s: &str) -> IResult<&str, Query> {
-  p_or(s)
 }
 
 #[cfg(test)]
