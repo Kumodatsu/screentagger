@@ -1,7 +1,7 @@
 use crate::data::tag::Tag;
 use std::collections::HashSet;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq)]
 pub enum Query {
   Tag(Tag),
   Not(Box<Query>),
