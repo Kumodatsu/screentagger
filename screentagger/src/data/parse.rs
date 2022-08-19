@@ -25,6 +25,13 @@ use nom::{
   },
 };
 
+pub fn parse_query(s: &str) -> Result<Query, ()> {
+  match p_query(s) {
+    Ok((_, query)) => Ok(query),
+    Err(error)     => Err(()),
+  }
+}
+
 fn p_query(s: &str) -> IResult<&str, Query> {
   p_or(s)
 }

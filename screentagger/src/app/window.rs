@@ -3,7 +3,7 @@ use web_view::{Content};
 use crate::app::app::*;
 use crate::app::marshal::Command;
 
-pub fn create_window() {
+pub fn create_window(app: &mut App) {
   web_view::builder()
     .title("Screentagger")
     .content(Content::Html(format!(
@@ -24,14 +24,18 @@ pub fn create_window() {
     .size(800, 600)
     .resizable(true)
     .debug(true)
-    .user_data(App::new())
+    .user_data(app)
     .invoke_handler(|webview, arg| {
       let cmd = serde_json::from_str(arg)
         .expect("Failed to deserialize command.");
       match cmd {
         Command::UpdateQuery { query_string } => {
-          let app = webview.user_data_mut();
-          app.query_prompt(&query_string);
+          let app        = webview.user_data_mut();
+          let matches    = app.query_prompt(&query_string);
+          let serialized = serde_json::to_string(&matches)
+            .expect("Failed to serialize query matches.");
+          webview.eval(&format!("displayMatches({});", &serialized))
+            .expect("Improper Javascript invocation.");
         },
         _ => {},
       };
