@@ -18,10 +18,6 @@ impl App {
     app
   }
 
-  pub fn get_database(&mut self) -> &Database {
-    &self.db
-  }
-
   pub fn query_prompt(&mut self, query_string: &str) -> HashSet<String> {
     if let Ok(query) = parse_query(query_string) {
       self.db.query_files(&query)

@@ -33,6 +33,7 @@ impl Database {
     db
   }
 
+  #[allow(dead_code)]
   pub fn display_table(&self, table_name: &str) {
     let mut statement = self.connection
       .prepare(format!("SELECT * FROM {}", table_name))

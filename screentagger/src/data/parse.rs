@@ -2,25 +2,17 @@ use crate::data::tag::{literal};
 use crate::data::query::{Query, Query::*};
 use nom::{
   IResult,
-  Parser,
-  branch::alt,
   bytes::complete::tag,
   character::complete::{
     multispace0,
-    multispace1,
     alphanumeric1,
   },
   combinator::{
-    complete,
     map,
-    opt,
-    value,
   },
-  error::ParseError,
   multi::many0,
   sequence::{
     delimited,
-    separated_pair,
     tuple,
   },
 };
@@ -28,7 +20,7 @@ use nom::{
 pub fn parse_query(s: &str) -> Result<Query, ()> {
   match p_query(s) {
     Ok((_, query)) => Ok(query),
-    Err(error)     => Err(()),
+    Err(_)     => Err(()),
   }
 }
 
@@ -77,7 +69,6 @@ mod tests {
   use super::*;
 
   use crate::data::{
-    query::Query::*,
     tag::Tag::*,
   };
   
