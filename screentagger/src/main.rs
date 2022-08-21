@@ -1,9 +1,7 @@
+mod app;
 mod data;
 mod db;
-mod app;
-
-use data::tag::literal;
-use std::collections::HashSet;
+mod file;
 
 fn main() {
   let mut app = app::app::App::new();
