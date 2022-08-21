@@ -1,7 +1,9 @@
 use serde_json;
+use tinyfiledialogs as tfd;
 use web_view::{Content};
 use crate::app::app::*;
 use crate::app::marshal::Command;
+use crate::file::util::reveal_file;
 
 pub fn create_window(app: &mut App) {
   web_view::builder()
@@ -37,7 +39,15 @@ pub fn create_window(app: &mut App) {
           webview.eval(&format!("displayMatches({});", &serialized))
             .expect("Improper Javascript invocation.");
         },
-        _ => {},
+        Command::AddFolder => {
+          let app = webview.user_data_mut();
+          if let Some(path) = tfd::select_folder_dialog("Select folder", "") {
+            app.add_folder(path);
+          }
+        },
+        Command::RevealFile { file_path } => {
+          reveal_file(&file_path);
+        }
       };
       Ok(())
     })
