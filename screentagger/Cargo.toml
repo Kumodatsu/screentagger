@@ -4,8 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-nom        = "7.1.1"
-serde      = { version = "1.0.143", features = ["derive"] }
-serde_json = "1.0"
-sqlite     = "0.27.0"
-web-view   = "0.7.3"
+nom             = "7.1.1"
+serde           = { version = "1.0.143", features = ["derive"] }
+serde_json      = "1.0"
+sqlite          = "0.27.0"
+tinyfiledialogs = "3.9.1"
+web-view        = "0.7.3"
