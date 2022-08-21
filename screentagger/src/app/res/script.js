@@ -8,6 +8,10 @@ let updateQuery = function(queryString) {
   invokeCommand({ command: "updateQuery", queryString: queryString });
 }
 
+let addFolder = function() {
+  invokeCommand({ command: "addFolder" });
+}
+
 let displayMatches = function(matches) {
   let ul = document.getElementById("file-display-list");
   while (ul.firstChild) {

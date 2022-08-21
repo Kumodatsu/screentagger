@@ -33,7 +33,7 @@ body {
   overflow-y: auto;
 }
 
-.edit-tags-button {
+.buttons-container {
   flex: 0 0 auto;
 }
 
@@ -54,9 +54,10 @@ body {
   list-style:  none;
 }
 
-.edit-tags-button button {
+.buttons-container button {
   background-color: #ddd;
   border:           none;
+  border-top:       1px solid black;
   color:            black;
   padding:          10px 20px;
   text-align:       center;
