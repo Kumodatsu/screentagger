@@ -25,7 +25,8 @@ let makeThumbnail = function(file) {
   let p = document.createElement("p");
   p.innerText = file;
 
-  thumbnail.appendChild(img).appendChild(p);
+  thumbnail.appendChild(img)
+  thumbnail.appendChild(p);
 
   return thumbnail;
 }
