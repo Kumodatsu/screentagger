@@ -25,7 +25,6 @@ pub fn create_window(app: &mut App) {
     )))
     .size(800, 600)
     .resizable(true)
-    .debug(true)
     .user_data(app)
     .invoke_handler(|webview, arg| {
       let cmd = serde_json::from_str(arg)
